@@ -25,7 +25,6 @@ function json2url(json){
 
 
 
-//options:url type data success error timeout
 function ajax(options){
 
 	options = options || {};
