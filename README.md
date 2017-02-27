@@ -1,5 +1,5 @@
 # Js-Ajax
-用原生JS封装ajax，仿jQuery风格
+用原生JS封装ajax
 # 一.HTTP请求的过程
 * http是一种无状态协议，不建立持久的链接 
 * http的请求过程：
