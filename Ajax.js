@@ -33,7 +33,7 @@ function ajax(options){
 	options.type = options.type || "get";
 	options.data = options.data || {};
 	options.timeout = options.timeout || 0;
-	
+	options.dataType = optins.dataType || 'json';
 	
 	var str = formatUrl(options.data);
 	
@@ -63,7 +63,20 @@ function ajax(options){
 		if(xhr.readyState == 4){//完成
 			clearTimeout(timer);
 			if(xhr.status >= 200 && xhr.status < 300 || xhr.status == 304){
-				options.success && options.success(xhr.responseText);
+				var data = xhr.responseText;
+				switch(options.dataType) {
+					case 'json':
+						if (window.JSON && JSON.parse) {
+							data = JSON.parse(data);
+						} else {
+							data = eval('(' + data + ')')
+						}
+						break;
+					case 'xml':
+						data = xhr.responseXML;
+						break;
+				}
+				options.success && options.success(data);
 			} else {
 				options.error && options.error(xhr.status);
 			}
