@@ -12,7 +12,7 @@ var $ = {};
 
 $.ajax = ajax;
 
-function json2url(json){
+function formatUrl(json){
 	
 	var arr = [];
 	
@@ -35,7 +35,7 @@ function ajax(options){
 	options.timeout = options.timeout || 0;
 	
 	
-	var str = json2url(options.data);
+	var str = formatUrl(options.data);
 	
 	//1 创建
 	if(window.XMLHttpRequest){
